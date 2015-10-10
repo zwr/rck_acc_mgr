@@ -1,5 +1,10 @@
 class AppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action only: [:create, :update, :destroy] do
+    fail ActionController::RoutingError.new('Forbidden'),
+         'You do not have the right to do this' unless current_user.admin?
+  end
 
   # GET /apps
   # GET /apps.json
