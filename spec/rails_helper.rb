@@ -28,7 +28,7 @@ Mongo::Logger.logger.level = Logger::WARN
 # Check what Rubocop has to say about the code
 RuboCop::CLI.new.run
 
-RSpec.configure do |config| # rubocop:disable SymbolProc
+RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -43,4 +43,7 @@ RSpec.configure do |config| # rubocop:disable SymbolProc
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  # Use Mongoid
+  config.include Mongoid::Matchers, type: :model
 end

@@ -26,8 +26,10 @@ gem 'mongoid'
 gem 'devise'
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'pry-rails'
+
+  gem 'rspec-rails'
+  gem 'mongoid-rspec', '3.0.0'
   gem 'factory_girl_rails', '~> 4.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
