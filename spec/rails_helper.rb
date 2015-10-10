@@ -22,6 +22,9 @@ require 'rspec/rails'
 #
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+# Do not show a lot of Mongo traces, only warnings and worse!
+Mongo::Logger.logger.level = Logger::WARN
+
 # Check what Rubocop has to say about the code
 RuboCop::CLI.new.run
 
