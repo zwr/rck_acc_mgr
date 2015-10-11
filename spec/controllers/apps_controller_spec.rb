@@ -35,6 +35,16 @@ RSpec.describe AppsController, type: :controller do
   # AppsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before(:each) do
+    User.delete_all
+    sign_in :user, FactoryGirl.create(:admin)
+  end
+
+  after(:each) do
+    sign_out :user
+    User.delete_all
+  end
+
   describe 'GET #index' do
     it 'assigns all apps as @apps' do
       App.delete_all
@@ -54,6 +64,7 @@ RSpec.describe AppsController, type: :controller do
 
   describe 'GET #new' do
     it 'assigns a new app as @app' do
+      sign_in :user, FactoryGirl.create(:user)
       get :new, {}, valid_session
       expect(assigns(:app)).to be_a_new(App)
     end

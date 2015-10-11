@@ -46,4 +46,6 @@ RSpec.configure do |config|
 
   # Use Mongoid
   config.include Mongoid::Matchers, type: :model
+
+  config.include Devise::TestHelpers, type: :controller
 end
